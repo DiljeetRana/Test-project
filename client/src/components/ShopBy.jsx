@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import HorSlider from "./HorSlider";
+import GenInfo, { Brands } from "./GenInfo";
 
 const ShopBy = ({ filter, title }) => {
   const [products, setProducts] = useState([]);
@@ -41,13 +42,16 @@ const ShopBy = ({ filter, title }) => {
 
         <div className="flex flex-nowrap space-x-4">
           {/* Ensure products is always an array */}
+          <Brands />
           {(Array.isArray(products) ? products : []).map((elem) => (
-            <HorSlider
-              product={elem}
-              key={elem._id || elem.id} // fallback if _id is missing
-              className="inline-block"
-              home={true}
-            />
+            <>
+              <HorSlider
+                product={elem}
+                key={elem._id || elem.id} // fallback if _id is missing
+                className="inline-block"
+                home={true}
+              />
+            </>
           ))}
         </div>
       </div>
